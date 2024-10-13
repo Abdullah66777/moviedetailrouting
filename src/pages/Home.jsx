@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import SearchIcon from "../search.svg";
 import MovieCard from "../MovieCard";
@@ -6,14 +7,9 @@ import  {useMovieContext}  from "../MovieContext";
 
 
 const Home = () => {
-  const { movies, moviedetails } = useMovieContext();
-  const [searchterm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    moviedetails("batman");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { setSearchTerm,searchterm, movies, moviedetails } = useMovieContext();
   return (
+    
     <div className="app">
       <h1>Movie world</h1>
       <div className="search">
