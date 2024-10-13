@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import SearchIcon from "../search.svg";
 import MovieCard from "../MovieCard";
 import { Link } from "react-router-dom";
-import { useMovieContext } from "../MovieContext";
 import  {useMovieContext}  from "../MovieContext";
 
 

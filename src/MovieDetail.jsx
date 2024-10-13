@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useMovieContext } from "./MovieContext";
 
-const API_URL = "http://www.omdbapi.com?apikey=14546103";
+
 
 const MovieDetail = () => {
   const { id } = useParams();
