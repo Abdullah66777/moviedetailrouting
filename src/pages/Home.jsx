@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SearchIcon from "../search.svg";
 import MovieCard from "../MovieCard";
 import { Link } from "react-router-dom";
+import { useMovieContext } from "../context/MovieContext";
+
 
 const Home = () => {
-  const API_URL = "http://www.omdbapi.com?apikey=14546103";
-  const [movies, setMovies] = useState([]);
-  const [searchterm, setSearchTerm] = useState("");
-  const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
-    setMovies(data.Search);
-    console.log(data);
-  };
+    const [movies, moviedetails] = useMovieContext();
+    const [searchterm, setSearchTerm] = useState("");
+  
 
   useEffect(() => {
-    searchMovies("batman");
-  }, []);
+    moviedetails("batman");
+  }, [moviedetails]);
   return (
     <div className="app">
       <h1>Movie world</h1>
@@ -31,7 +27,7 @@ const Home = () => {
           src={SearchIcon}
           alt="search"
           onClick={() => {
-            searchMovies(searchterm);
+            moviedetails(searchterm);
           }}
         />
       </div>
