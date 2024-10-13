@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import SearchIcon from "../search.svg";
 import MovieCard from "../MovieCard";
 import { Link } from "react-router-dom";
-import  {useMovieContext}  from "../context/MovieContext";
+import  {useMovieContext}  from "../MovieContext";
 
 
 const Home = () => {
