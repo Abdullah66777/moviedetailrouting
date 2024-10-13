@@ -1,18 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SearchIcon from "../search.svg";
 import MovieCard from "../MovieCard";
 import { Link } from "react-router-dom";
+import { useMovieContext } from "../MovieContext";
 import  {useMovieContext}  from "../MovieContext";
 
 
 const Home = () => {
-    const [movies, moviedetails] = useMovieContext();
-    const [searchterm, setSearchTerm] = useState("");
-  
+  const { movies, moviedetails } = useMovieContext();
+  const [searchterm, setSearchTerm] = useState("");
 
   useEffect(() => {
     moviedetails("batman");
-  }, [moviedetails]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="app">
       <h1>Movie world</h1>
