@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useMovieContext } from "./MovieContext";
 
 const API_URL = "http://www.omdbapi.com?apikey=14546103";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [moviedata, setMovieData] = useState(null);
+  const { movies } = useMovieContext();
+  const moviedata = movies.find((movie) => movie.imdbID === id);
 
-  useEffect(() => {
-    const moviedetails = async () => {
-      const response = await fetch(`${API_URL}&i=${id}`);
-      const data = await response.json();
-      setMovieData(data);
-      console.log(data);
-    };
-    moviedetails();
-  }, [id]);
+  // const [moviedata, setMovieData] = useState(null);
+
+  // useEffect(() => {
+  //   const moviedetails = async () => {
+  //     const response = await fetch(`${API_URL}&i=${id}`);
+  //     const data = await response.json();
+  //     setMovieData(data);
+  //     console.log(data);
+  //   };
+  //   moviedetails();
+  // }, [id]);
   return (
     <div>
       {moviedata ? (
