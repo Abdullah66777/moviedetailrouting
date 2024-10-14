@@ -1,4 +1,4 @@
-import React, { useEffect,createContext, useState } from "react";
+import React, { useEffect, createContext, useState } from "react";
 
 const MovieContext = createContext();
 const API_URL = "http://www.omdbapi.com?apikey=14546103";
@@ -16,7 +16,9 @@ const MovieProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <MovieContext.Provider value={{ searchterm, setSearchTerm, movies, moviedetails }}>
+    <MovieContext.Provider
+      value={{ searchterm, setSearchTerm, movies, moviedetails }}
+    >
       {children}
     </MovieContext.Provider>
   );

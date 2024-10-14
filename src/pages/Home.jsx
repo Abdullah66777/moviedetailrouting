@@ -1,15 +1,12 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import SearchIcon from "../search.svg";
 import MovieCard from "../MovieCard";
 import { Link } from "react-router-dom";
-import  {useMovieContext}  from "../MovieContext";
-
+import { useMovieContext } from "../MovieContext";
 
 const Home = () => {
-  const { setSearchTerm,searchterm, movies, moviedetails } = useMovieContext();
+  const { setSearchTerm, searchterm, movies, moviedetails } = useMovieContext();
   return (
-    
     <div className="app">
       <h1>Movie world</h1>
       <div className="search">
@@ -20,6 +17,7 @@ const Home = () => {
         />
 
         <img
+          className="search-icon"
           src={SearchIcon}
           alt="search"
           onClick={() => {
