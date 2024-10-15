@@ -6,6 +6,10 @@ const MovieCard = ({ movie }) => {
       <div className="year">
         <p>Release date:{movie.release_date}</p>
       </div>
+      <div className="overview">
+        <p>Plot: {movie.overview}</p>
+        <h3>click to see more details</h3>
+      </div>
       <div className=".movie-poster">
         <img
           src={
