@@ -4,21 +4,20 @@ const MovieCard = ({ movie }) => {
   return (
     <div className="movie">
       <div className="year">
-        <p>{movie.Year}</p>
+        <p>Release date:{movie.release_date}</p>
       </div>
       <div className=".movie-poster">
         <img
           src={
-            movie.Poster !== "N/A"
-              ? movie.Poster
-              : "https://via.placeholder.com/400"
+            movie.poster_path !== null
+              ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+              : `https://via.placeholder.com/300`
           }
-          alt={movie.Title}
+          alt={movie.original_title}
         />
       </div>
       <div>
-        <span>{movie.Type}</span>
-        <h3>{movie.Title}</h3>
+        <h3>{movie.original_title}</h3>
       </div>
     </div>
   );

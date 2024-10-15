@@ -1,15 +1,19 @@
 import React, { useEffect, createContext, useState } from "react";
-
+//aad07d1c99caf608672e75fc3e221a0d
+//http://www.omdbapi.com?apikey=14546103
 const MovieContext = createContext();
-const API_URL = "http://www.omdbapi.com?apikey=14546103";
+const API_URL =
+  "https://api.themoviedb.org/3/search/movie?api_key=aad07d1c99caf608672e75fc3e221a0d";
 const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [searchterm, setSearchTerm] = useState("");
   const moviedetails = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
+    const response = await fetch(
+      `${API_URL}&query=${encodeURIComponent(title)}`
+    );
     const data = await response.json();
-    setMovies(data.Search);
-    console.log(data.Search);
+    setMovies(data.results);
+    console.log(data.results);
   };
   useEffect(() => {
     moviedetails("batman");

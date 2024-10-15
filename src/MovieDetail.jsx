@@ -5,7 +5,7 @@ import { useMovieContext } from "./MovieContext";
 const MovieDetail = () => {
   const { id } = useParams();
   const { movies } = useMovieContext();
-  const moviedata = movies.find((movie) => movie.imdbID === id);
+  const moviedata = movies.find((movie) => (movie.id = id));
 
   // const [moviedata, setMovieData] = useState(null);
 
@@ -24,15 +24,14 @@ const MovieDetail = () => {
       <div>
         {moviedata ? (
           <div className="moviedetails">
-            <h3>YEAR:{moviedata.Year}</h3>
-            <h3>TITLE:{moviedata.Title}</h3>
-            <h3>TYPE:{moviedata.Type} </h3>
-            <p>IMDB ID:{moviedata.imdbID}</p>
+            <h3>RELEASE DATE:{moviedata.release_date}</h3>
+            <h3>TITLE:{moviedata.original_title}</h3>
+            <p>IMDB ID:{moviedata.id}</p>
             <img
               src={
-                moviedata.Poster !== "N/A"
-                  ? moviedata.Poster
-                  : "https://via.placeholder.com/400"
+                moviedata.poster_path !== null
+                  ? `https://image.tmdb.org/t/p/w500${moviedata.poster_path}`
+                  : "https://via.placeholder.com/300"
               }
               alt={moviedata.Title}
             />

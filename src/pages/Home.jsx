@@ -29,7 +29,7 @@ const Home = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movies) => (
-            <Link to={`/movies/${movies.imdbID}`} key={movies.imdbID}>
+            <Link to={`/movies/${movies.id}`} key={movies.id}>
               <MovieCard movie={movies} />
             </Link>
           ))}
