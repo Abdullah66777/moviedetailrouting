@@ -5,7 +5,7 @@ import { useMovieContext } from "./MovieContext";
 const MovieDetail = () => {
   const { id } = useParams();
   const { movies } = useMovieContext();
-  const moviedata = movies.find((movie) => (movie.id = id));
+  const moviedata = movies.find((movie) => movie.id === parseInt(id, 10));
 
   // const [moviedata, setMovieData] = useState(null);
 

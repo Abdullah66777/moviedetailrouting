@@ -6,6 +6,42 @@
   border: 0%;
   box-sizing: border-box;
 }
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.049);
+  padding: 10px 10px 10px 20px; /* top right bottom left */
+  font-size: 20px;
+  position: relative;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #f0f0f0;
+  align-items: center;
+}
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding-left: 450px;
+}
+.menu li {
+  text-decoration: none;
+  color: #f0f0f0;
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.menu li:hover {
+  color: #ffffff; /* Change color on hover */
+  transform: scale(1.1); /* Zoom effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.menu-toggle {
+  display: none; /* Hide toggle button by default */
+  background: none;
+  border: none;
+  color: #f0f0f0;
+  font-size: 24px; /* Size of the toggle button */
+  cursor: pointer;
+}
 body {
   font-family: var(--font-roboto);
   background-color: #000000;
@@ -43,33 +79,74 @@ body {
   padding: 4rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 }
-h1 {
+/* Animation for the text */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.app h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+  background: linear-gradient(90deg, #353434, #f3d5d5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin: 5px 10px;
+
+  /* Animation */
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideUp 1s ease-out forwards;
+}
+
+.app h1 {
+  padding-top: 80px;
   font-family: "Raleway", sans-serif;
   font-size: 4rem;
   background: linear-gradient(90deg, #353434, #f3d5d5);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-align: center;
+
   margin: 5px 10px;
+
+  /* Animation */
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideUp 1s ease-out forwards;
 }
 
 .search {
-  width: 71%;
-  margin: 4rem 0 2rem;
-
+  width: 60%;
+  margin-top: 10rem;
+  margin-bottom: 8rem;
   display: flex;
   align-items: center;
   justify-content: center;
 
   padding: 1.5rem 1.75rem;
-  border-radius: 3rem;
+  border-radius: 4rem;
   background: #1f2123;
-  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+.search:hover {
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .search input {
@@ -165,13 +242,13 @@ h1 {
 }
 .container {
   display: flex;
-  border: 1px #1c1d1f;
+  border: 1px #fdfefe;
   border-radius: 10px;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 20px;
   gap: 20px;
-  background-color: #f0f0f0;
+  background-color: #f0f0f015;
 }
 .empty {
   width: 100%;
@@ -187,7 +264,7 @@ h1 {
   font-family: var(--font-secondary);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   .app {
     padding: 4rem 2rem;
   }
@@ -205,15 +282,42 @@ h1 {
     width: 20px;
     height: 20px;
   }
+  .menu {
+    display: none; /* Hide menu by default on small screens */
+    flex-direction: column; /* Stack items vertically */
+    position: absolute; /* Position the menu under the navbar */
+    top: 100%; /* Position it below the navbar */
+    left: 0; /* Align it to the left */
+    background-color: rgba(255, 255, 255, 0.1); /* Optional: Background color */
+    width: 100%; /* Full width */
+    padding-left: 50px;
+  }
+
+  .menu.open {
+    display: flex; /* Show menu when open */
+  }
+
+  .menu-toggle {
+    display: block; /* Show toggle button on small screens */
+    padding-left: 200px;
+  }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .app {
     padding: 4rem 1.75rem;
   }
-
-  h1 {
+  .search {
+    padding: 1rem 1.75rem;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .app h1 {
     font-size: 2rem;
+  }
+  .app h2 {
+    font-size: 1rem;
   }
 
   .container {
@@ -227,5 +331,24 @@ h1 {
   .moviedetails {
     width: "100%";
     margin: 1rem;
+  }
+  .menu {
+    display: none; /* Hide menu by default on small screens */
+    flex-direction: column; /* Stack items vertically */
+    position: absolute; /* Position the menu under the navbar */
+    top: 100%; /* Position it below the navbar */
+    left: 0; /* Align it to the left */
+    background-color: rgba(255, 255, 255, 0.1); /* Optional: Background color */
+    width: 100%; /* Full width */
+    padding-left: 30px;
+  }
+
+  .menu.open {
+    display: flex; /* Show menu when open */
+  }
+
+  .menu-toggle {
+    display: block; /* Show toggle button on small screens */
+    padding-left: 200px;
   }
 }
